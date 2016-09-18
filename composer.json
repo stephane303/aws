@@ -1,0 +1,6 @@
+{
+    "name": "stef",
+    "require": {
+        "aws/aws-sdk-php": "^3.19"
+    }
+}
