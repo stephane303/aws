@@ -46,11 +46,36 @@ $config['region'] = 'us-west-2';
 $config['ami'] = 'ami-43f22f23';
 //$allConfig[] = $config;
 
+// artakan10
+$config = array();
+$config['key'] = 'AKIAJFGLKCXG75KYXVWQ';
+$config['secret'] = '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';
+$config['region'] = 'us-west-2';
+$config['ami'] = 'ami-5bec313b';
+//$allConfig[] = $config;
+
+// artakan11 onze
+$config = array();
+$config['key'] = 'AKIAIGJGXOJRTTENFPAQ';
+$config['secret'] = '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';
+$config['region'] = 'us-west-2';
+$config['ami'] = 'ami-c4ed30a4';
+$allConfig[] = $config;
+
+
+// artakan12
+$config = array();
+$config['key'] = 'AKIAJBOBRBNG6N47YTEA';
+$config['secret'] = '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';
+$config['region'] = 'us-west-2';
+$config['ami'] = 'ami-75f22f15';
+//$allConfig[] = $config;
 
 
 
-    
 
+
+  
 function getInstances ($ec2Client) {
     $arrayOfInstances = array();
     $result = $ec2Client->DescribeInstances(array());
