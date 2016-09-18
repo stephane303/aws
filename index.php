@@ -9,7 +9,7 @@ $config['key'] = 'AKIAJADEQPQTKAQSMOFQ';
 $config['secret'] = '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';
 $config['region'] = 'us-west-2';
 $config['ami'] = 'ami-6ef72a0e';
-//$allConfig[] = $config;
+$allConfig[] = $config;
     
     
 // artakan303
@@ -19,7 +19,7 @@ $config['key'] = 'AKIAJLK2MD6H7QFG2W2A';
 $config['secret'] = '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';
 $config['region'] = 'us-west-2';
 $config['ami'] = 'ami-e7fa2787';
-//$allConfig[] = $config;
+$allConfig[] = $config;
 
 // artakan304
 $config = array();
@@ -28,7 +28,7 @@ $config['key'] = 'AKIAJR6DHDKXOR4QP75Q';
 $config['secret'] = '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';
 $config['region'] = 'us-west-2';
 $config['ami'] = 'ami-8cf72aec';
-//$allConfig[] = $config;
+$allConfig[] = $config;
 
 // artakan305
 $config = array();
@@ -37,7 +37,7 @@ $config['key'] = 'AKIAJUGANS4IHZB5U6LA';
 $config['secret'] = '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';
 $config['region'] = 'us-west-2';
 $config['ami'] = 'ami-18ed3078';
-//$allConfig[] = $config;
+$allConfig[] = $config;
 
 
 // artakan306
@@ -47,7 +47,7 @@ $config['key'] = 'AKIAI5RH7JAMGGDWKQJQ';
 $config['secret'] = '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';
 $config['region'] = 'us-west-2';
 $config['ami'] = 'ami-43f22f23';
-//$allConfig[] = $config;
+$allConfig[] = $config;
 
 // artakan10
 $config = array();
@@ -56,7 +56,7 @@ $config['key'] = 'AKIAJFGLKCXG75KYXVWQ';
 $config['secret'] = '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';
 $config['region'] = 'us-west-2';
 $config['ami'] = 'ami-5bec313b';
-//$allConfig[] = $config;
+$allConfig[] = $config;
 
 // artakan11 onze
 $config = array();
@@ -75,7 +75,7 @@ $config['key'] = 'AKIAJBOBRBNG6N47YTEA';
 $config['secret'] = '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';
 $config['region'] = 'us-west-2';
 $config['ami'] = 'ami-75f22f15';
-//$allConfig[] = $config;
+$allConfig[] = $config;
   
 function getInstances ($ec2Client) {
     $arrayOfInstances = array();
