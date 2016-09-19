@@ -1,7 +1,13 @@
 <?php
-function getInstances ($ec2Client) {
+function getNonTerminatedInstances ($ec2Client) {
     $arrayOfInstances = array();
-    $reservations = $ec2Client->getIterator('DescribeInstances', array());
+    $reservations = $ec2Client->getIterator('DescribeInstances', array(
+    'Filters' => [
+        [
+            'Name' => 'instance-state-name',
+            'Values' => ['pending', 'running', 'shutting-down', 'stopping' ,'stopped']
+        ]]       
+    ));
     foreach($reservations as $reservation){
         $instances = $reservation['Instances'];
         foreach($instances as $instance){
@@ -10,11 +16,10 @@ function getInstances ($ec2Client) {
     }
 
     return $arrayOfInstances;
-
 }
 
 function terminateAllInstances ($account, $dryRun = false){
-    $instances = getInstances($account['client']);
+    $instances = getNonTerminatedInstances($account['client']);
 
     if (!empty($instances)){
         $res = $account['client']->terminateInstances(array(
@@ -29,7 +34,7 @@ function terminateAllInstances ($account, $dryRun = false){
 function startAllInstances (&$account, $dryRun = false){
     try {
         echo($account['name'].' starting'.PHP_EOL);
-        $instances = getInstances($account['client']);
+        $instances = getNonTerminatedInstances($account['client']);
         if (!empty($instances)) {
             echo 'Waiting for termination of '.$account['name'].PHP_EOL;
             $account['client']->waitUntil('InstanceTerminated', ['InstanceIds' => $instances]);
