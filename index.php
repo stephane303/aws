@@ -18,10 +18,12 @@ foreach($allAccounts as &$account){
        ));
        terminateAllInstances($account);
 }
+unset($account);
 
 foreach($allAccounts as &$account){
     startAllInstances($account);
 }
+unset($account);
 
 // Traitement des accounts en erreur
 echo 'Traitement des erreurs:'.PHP_EOL;
