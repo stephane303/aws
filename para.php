@@ -21,8 +21,8 @@ foreach($allAccounts as $account){
                'scheme' => 'http',
                'version' => '2016-04-01'
            ));
-        terminateAllInstances($account, true);
-        startAllInstances($account, true);
+        terminateAllInstances($account);
+        startAllInstances($account);
         exit(0);
     } else {
         // We are the parent.
