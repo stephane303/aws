@@ -26,9 +26,10 @@ foreach($allAccounts as &$account){
 // Traitement des accounts en erreur
 echo 'Traitement des erreurs:'.PHP_EOL;
 foreach($allAccounts as $account){
+    echo $account['name'].':'.@$account['Exception'].PHP_EOL;
     if (isset($account['Exception'])) {
-        // On refait tous le binz
-        terminateAllAccountInstances($account );  
+        // On refait tout le binz
+        terminateAllInstances($account );  
         startAllInstances($account);        
     }
 }

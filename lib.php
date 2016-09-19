@@ -26,15 +26,15 @@ function terminateAllInstances ($account){
 
 
 function startAllInstances (&$account){
-    echo($account['name'].' starting'.PHP_EOL);
-
-    $instances = getInstances($account['client']);
-    if (!empty($instances)) {
-        echo 'Waiting for termination of '.$account['name'].PHP_EOL;
-        $account['client']->waitUntil('InstanceTerminated', ['InstanceIds' => $instances]);
-        echo (count($instances).' instance terminated'.PHP_EOL);
-    }
     try {
+        echo($account['name'].' starting'.PHP_EOL);
+        $instances = getInstances($account['client']);
+        if (!empty($instances)) {
+            echo 'Waiting for termination of '.$account['name'].PHP_EOL;
+            $account['client']->waitUntil('InstanceTerminated', ['InstanceIds' => $instances]);
+            echo (count($instances).' instance terminated'.PHP_EOL);
+        }
+
         $res =$account['client']->runInstances(array(
             'ImageId' => $account['ami'], 
             'MaxCount' => 20, 
