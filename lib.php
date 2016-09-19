@@ -13,19 +13,20 @@ function getInstances ($ec2Client) {
 
 }
 
-function terminateAllInstances ($account){
+function terminateAllInstances ($account, $dryRun = false){
     $instances = getInstances($account['client']);
 
     if (!empty($instances)){
         $res = $account['client']->terminateInstances(array(
-            'InstanceIds' => $instances 
+            'InstanceIds' => $instances,
+            'DryRun' => $dryRun
         ));
         echo($account['name'].' termination'.PHP_EOL);
     }    
 }
 
 
-function startAllInstances (&$account){
+function startAllInstances (&$account, $dryRun = false){
     try {
         echo($account['name'].' starting'.PHP_EOL);
         $instances = getInstances($account['client']);
@@ -39,7 +40,8 @@ function startAllInstances (&$account){
             'ImageId' => $account['ami'], 
             'MaxCount' => 20, 
             'MinCount' => 20, 
-            'InstanceType' => 't2.micro'
+            'InstanceType' => 't2.micro',
+            'DryRun' => $dryRun
         ));
         echo($account['name'].' started'.PHP_EOL);
     }
