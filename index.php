@@ -1,4 +1,5 @@
 <?php
+echo '===============START================='.PHP_EOL;
 echo date("F j, Y, g:i a").PHP_EOL; 
 if ( php_sapi_name() !== 'cli') {
     echo 'Only cli';die;
@@ -35,4 +36,7 @@ foreach($allAccounts as $account){
         startAllInstances($account);        
     }
 }
+
+echo date("F j, Y, g:i a").PHP_EOL;
+echo '===============END==================='.PHP_EOL;
 
