@@ -24,6 +24,13 @@ foreach($allAccounts as $account){
            ));
         terminateAllInstances($account);
         startAllInstances($account);
+        
+        if (isset($account['Exception'])) {
+        // On dort un peu et on recommence une fois
+            sleep(300);
+            terminateAllInstances($account );  
+            startAllInstances($account);                           
+        }
         exit(0);
     } else {
         // We are the parent.
