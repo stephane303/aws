@@ -26,7 +26,7 @@ foreach($allAccounts as $account){
         startAllInstances($account);
         
         for($i=0; $i<=4; $i++){
-            if (isset($account['Exception'])) {
+            if ($account['Exception']) {
                 // On dort un peu et on recommence une fois
                 sleep($i*30+30);
                 terminateAllInstances($account );  
