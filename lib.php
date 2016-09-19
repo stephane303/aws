@@ -39,7 +39,7 @@ function startAllInstances (&$account, $dryRun = false){
         if (!empty($instances)) {
             echo 'Waiting for termination of '.$account['name'].PHP_EOL;
             $account['client']->waitUntil('InstanceTerminated', ['InstanceIds' => $instances]);
-            echo (count($instances).' instance terminated'.PHP_EOL);
+            echo ($account['name'].' '.count($instances).' instance terminated'.PHP_EOL);
         }
 
         $res =$account['client']->runInstances(array(
