@@ -30,7 +30,7 @@ unset($account);
 echo 'Traitement des erreurs:'.PHP_EOL;
 foreach($allAccounts as $account){
     echo $account['name'].':'.@$account['Exception'].PHP_EOL;
-    if (isset($account['Exception'])) {
+    if ( $account['Exception'] ) {
         // On refait tout le binz
         terminateAllInstances($account );  
         startAllInstances($account);        

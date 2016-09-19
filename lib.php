@@ -33,6 +33,7 @@ function terminateAllInstances ($account, $dryRun = false){
 
 function startAllInstances (&$account, $dryRun = false){
     try {
+        $account['Exception'] = false;
         echo($account['name'].' starting'.PHP_EOL);
         $instances = getNonTerminatedInstances($account['client']);
         if (!empty($instances)) {
