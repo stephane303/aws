@@ -1,0 +1,2 @@
+gpg -c file
+gpg file
