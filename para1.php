@@ -12,7 +12,7 @@ $regions =
 array (
 "us-east-1" => 'ami-3d146f2a',
 "us-west-1" => 'ami-0e2b656e',
-"us-west-2" => 'ami-a134e8c1',
+//"us-west-2" => 'ami-a134e8c1',
 "eu-west-1" => 'ami-11f98362',
 "ap-northeast-1" => 'ami-56ff2d37',
 "ap-northeast-2" => 'ami-de4d98b0',
@@ -32,9 +32,9 @@ array (
 "ap-northeast-1" => 10,
 "ap-northeast-2" => 10,
 "ap-southeast-1" => 10,
-"ap-southeast-2" => 10,
-"ap-south-1" => 10,
-"sa-east-1" => 10,
+"ap-southeast-2" => 5,
+"ap-south-1" => 5,
+"sa-east-1" => 5,
 "eu-central-1" => 5
 );
 
@@ -54,6 +54,7 @@ foreach($allAccounts as $account){
                 
             // We are the child process
                 echo $region.PHP_EOL;
+                $account['region'] = $region;
                 $account['client'] = 
                     \Aws\Ec2\Ec2Client::factory(array(
                        'credentials' =>  new \Aws\Credentials\Credentials($account['key'], $account['secret']),

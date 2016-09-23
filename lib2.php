@@ -25,8 +25,9 @@ function terminateAllInstances ($account, $dryRun = false){
         $res = $account['client']->terminateInstances(array(
             'InstanceIds' => $instances,
             'DryRun' => $dryRun
+
         ));
-        echo($account['name'].' termination'.PHP_EOL);
+        echo($account['name'].' '.$account['region'].' termination'.PHP_EOL);
     }    
 }
 
@@ -34,12 +35,12 @@ function terminateAllInstances ($account, $dryRun = false){
 function startAllInstances (&$account,$howmany){
     try {
         $account['Exception'] = false;
-        echo($account['name']." starting $howmany".PHP_EOL);
+        echo($account['name']." starting ".$account['region']." $howmany".PHP_EOL);
         $instances = getNonTerminatedInstances($account['client']);
         if (!empty($instances)) {
-            echo 'Waiting for termination of '.$account['name'].PHP_EOL;
+            echo $account['region'].' Waiting for termination of '.$account['name'].PHP_EOL;
             $account['client']->waitUntil('InstanceTerminated', ['InstanceIds' => $instances]);
-            echo ($account['name'].' '.count($instances).' instance terminated'.PHP_EOL);
+            echo ($account['region'].' '.$account['name'].' '.count($instances).' instance terminated'.PHP_EOL);
         }
 
         $res =$account['client']->runInstances(array(
@@ -48,7 +49,7 @@ function startAllInstances (&$account,$howmany){
             'MinCount' => $howmany, 
             'InstanceType' => 't2.micro'
         ));
-        echo($account['name'].' started'.PHP_EOL);
+        echo($account['region'].' '.$account['name'].' started'.PHP_EOL);
     }
     catch (Exception $ex) {
         echo $ex->getMessage().PHP_EOL;
