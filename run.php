@@ -6,7 +6,7 @@ if ( php_sapi_name() !== 'cli') {
 }
 require 'vendor/autoload.php';
 require 'config.php';
-require 'lib.php';
+require 'lib1.php';
 
 foreach($allAccounts as &$account){
 
@@ -17,26 +17,6 @@ foreach($allAccounts as &$account){
            'scheme' => 'http',
            'version' => '2016-04-01'
        ));
-       terminateAllInstances($account);
-}
-unset($account);
-
-foreach($allAccounts as &$account){
     startAllInstances($account);
+
 }
-unset($account);
-
-// Traitement des accounts en erreur
-echo 'Traitement des erreurs:'.PHP_EOL;
-foreach($allAccounts as $account){
-    echo $account['name'].':'.@$account['Exception'].PHP_EOL;
-    if ( $account['Exception'] ) {
-        // On refait tout le binz
-        terminateAllInstances($account );  
-        startAllInstances($account);        
-    }
-}
-
-echo date("F j, Y, g:i a").PHP_EOL;
-echo '===============END==================='.PHP_EOL;
-
