@@ -12,7 +12,7 @@ $regions =
 array (
 "us-east-1" => 'ami-3d146f2a',
 "us-west-1" => 'ami-0e2b656e',
-//"us-west-2" => 'ami-a134e8c1',
+"us-west-2" => 'ami-a134e8c1',
 "eu-west-1" => 'ami-11f98362',
 "ap-northeast-1" => 'ami-56ff2d37',
 "ap-northeast-2" => 'ami-de4d98b0',

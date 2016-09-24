@@ -39,8 +39,8 @@ function startAllInstances (&$account, $dryRun = false){
 
         $res =$account['client']->runInstances(array(
             'ImageId' => $account['ami'], 
-            'MaxCount' => 20, 
-            'MinCount' => 20, 
+            'MaxCount' => 1, 
+            'MinCount' => 1, 
             'InstanceType' => 't2.micro',
             'DryRun' => $dryRun
         ));
@@ -48,7 +48,7 @@ function startAllInstances (&$account, $dryRun = false){
     }
     catch (Exception $ex) {
         if (strpos($ex,'<Error><Code>Blocked</Code><Message>')){
-           echo 'Bloqué'.PHP_EOL;
+           echo $account['name'].' Bloqué'.PHP_EOL;
 	}
     }    
 }

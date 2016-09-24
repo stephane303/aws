@@ -52,6 +52,10 @@ function startAllInstances (&$account,$howmany){
         echo($account['region'].' '.$account['name'].' started'.PHP_EOL);
     }
     catch (Exception $ex) {
+        if (strpos($ex,'<Error><Code>Blocked</Code><Message>')){
+           echo $account['name'].' Bloqué'.PHP_EOL;
+           return;
+        }
         echo $ex->getMessage().PHP_EOL;
 	echo 'Exception:Try again later....'.PHP_EOL;
         $account['Exception'] = true;
